@@ -1,0 +1,103 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="default">
+  
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="rplidar_a2">
+      <link name="base">
+        
+         <pose>0 0 0.0093 0 0 0</pose>
+         <inertial>
+            <mass>0.24</mass>
+            <inertia>
+             <ixx>0.0000935592</ixx>
+             <iyy>0.0000935592</iyy>
+             <izz>0.0001732800</izz>
+             <ixy>0</ixy>
+             <ixz>0</ixz>
+             <iyz>0</iyz>
+            </inertia>
+         </inertial>
+             
+         <collision name="base_collision">
+          <geometry>
+            <cylinder>
+              <radius>0.038</radius>
+              <length>0.0186</length>
+            </cylinder>
+          </geometry>
+         </collision>
+         
+         <visual name="base_visual">
+          <geometry>
+            <cylinder>
+              <radius>0.038</radius>
+              <length>0.0186</length>
+            </cylinder>
+          </geometry>
+         </visual>
+      </link>
+      
+      <link name="top">
+         
+         <pose>0 0 0.0297 0 0 0</pose>
+         <inertial>
+            <mass>0.1</mass>
+            <inertia>
+             <ixx>0.000036507</ixx>
+             <iyy>0.000036507</iyy>
+             <izz>0.000064800</izz>
+             <ixy>0</ixy>
+             <ixz>0</ixz>
+             <iyz>0</iyz>
+            </inertia>
+         </inertial>
+         <collision name="top_collision">
+           <geometry>
+             <cylinder>
+                <radius>0.036</radius>
+                <length>0.0222</length>
+             </cylinder>
+           </geometry>
+         </collision>
+         
+         <visual name="top_visual">
+           <geometry>
+             <cylinder>
+                <radius>0.036</radius>
+                <length>0.0222</length>
+             </cylinder>
+           </geometry>
+         </visual>
+         
+         
+      </link>
+      <joint type="revolute" name="joint">
+        
+        <pose>0 0 -0.0111 0 0 0</pose>
+        <parent>base</parent>
+        <child>top</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          
+          <limit>
+            <lower>-10000000000000000</lower>
+            <upper>10000000000000000</upper>
+            
+          </limit>
+        </axis>
+      </joint>
+      
+      
+    </model>
+    
+  </world>
+  
+</sdf>  
+  
